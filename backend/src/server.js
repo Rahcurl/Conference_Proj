@@ -12,13 +12,17 @@ app.get("/",(req,res)=> {
     res.status(200).json({msg:"api is up and running"})
 })
 
+app.get("/books",(req,res)=> { 
+    res.status(200).json({msg:"this is the books endpoint"})
+})
+
 //make our app ready for deploy
 if(ENV.NODE_ENV === "Production"){
     app.use(express.static(path.join(___dirname,"../frontend/dist")))
 }
 
 app.get("/{*any}", (req,res) => {
-    res.sendFIle(path.join(__dirname,"==/frontend","dist","index.htm"))
+    res.sendFIle(path.join(__dirname,"==/frontend","dist","index.html"))
 })
 
 app.listen(ENV.PORT,() =>console.log("Server is running on port:",ENV.PORT))
