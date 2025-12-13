@@ -13,4 +13,12 @@ app.get("/",(req,res)=> {
 })
 
 //make our app ready for deploy
+if(ENV.NODE_ENV === "Production"){
+    app.use(express.static(path.join(___dirname,"../frontend/dist")))
+}
+
+app.get("/{*any}", (req,res) => {
+    res.sendFIle(path.join(__dirname,"==/frontend","dist","index.htm"))
+})
+
 app.listen(ENV.PORT,() =>console.log("Server is running on port:",ENV.PORT))
