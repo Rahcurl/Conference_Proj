@@ -22,7 +22,7 @@ if(ENV.NODE_ENV === "Production"){
 }
 
 app.get("/{*any}", (req,res) => {
-    res.sendFIle(path.join(__dirname,"../frontend","dist","index.html"))//you can give like this for path
+    res.sendFIle(path.join(__dirname,"../frontend","dist","index.html"))//you can give like this for path to the proj
 })
 
 app.listen(ENV.PORT,() =>console.log("Server is running on port:",ENV.PORT))
