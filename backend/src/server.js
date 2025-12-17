@@ -2,6 +2,7 @@ import express from "express"
 import { ENV } from "./lib/env.js"
 import path from "path"
 import { connectDB } from "./lib/db.js";
+import { start } from "repl";
 
 const app = express()
 
@@ -22,14 +23,19 @@ if (ENV.NODE_ENV === "Production") {
     app.use(express.static(path.join(__dirname, "../frontend/dist")))
 }
 
-// OLD (causing crash)
 app.get("/{*any}", (req,res) => {
     res.sendFile(path.join(__dirname,"../frontend","dist","index.html"))
 })
 
-//connect database first
-connectDB();
+//Database connection 
 
-app.listen(ENV.PORT, () => {
-    console.log("Server is running on port:", ENV.PORT)
-})
+const startServer = async () =>{
+    try{
+        await connectDB();
+        app.listen(ENV.PORT, () => {
+        console.log("Server is running on port:", ENV.PORT)
+        });
+    }
+    catch(error){}
+}
+startServer();

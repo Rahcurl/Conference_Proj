@@ -1,6 +1,6 @@
 import dotenv from "dotenv"
 
-dotenv.config();
+dotenv.config({quiet:true}); //prevent the commiting in terminal i.e --🔐 prevent committing .env to code: https://dotenvx.com/precommit
 
 export const ENV={
     PORT : process.env.PORT,
