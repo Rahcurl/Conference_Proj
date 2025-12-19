@@ -16,8 +16,8 @@ function App() {
       <SignedOut>
         <p>Please sign in to continue.</p>
         <SignInButton mode="modal">
-          <button classname="">
-            Sign up please
+          <button>
+            Login
           </button>
         </SignInButton>
       </SignedOut>
