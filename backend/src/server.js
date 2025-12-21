@@ -3,10 +3,14 @@ import { ENV } from "./lib/env.js"
 import path from "path"
 import { connectDB } from "./lib/db.js";
 import { start } from "repl";
+import cors from "cors"
 
 const app = express()
 
 const __dirname = path.resolve();
+
+app.use(express.json())
+app.use(cors())
 
 //for getting the messange as json successfully 
 //use localhost:your_portnumber_in_dotenv i.e localhost:5001
