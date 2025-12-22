@@ -10,7 +10,8 @@ const app = express()
 const __dirname = path.resolve();
 
 app.use(express.json())
-app.use(cors())
+// credentials:true meaning?? => server allows browser to include cookies on request
+app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 
 //for getting the messange as json successfully 
 //use localhost:your_portnumber_in_dotenv i.e localhost:5001
