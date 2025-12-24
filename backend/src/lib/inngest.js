@@ -2,6 +2,7 @@ import {Inngest} from "inngest";
 import {connectDB} from "./db.js";
 import User from "../models/User.js";
 import { connect } from "mongoose";
+import {upsertStreamUser} from "./stream.js"
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "Conference_Project" });
@@ -22,7 +23,12 @@ const syncUser = inngest.createFunction(
 
             await User.create(newUser)
 
-            //todo: Do something else
+            await upsertStreamUser({
+                id: newUser.clerkId.toString(),
+                name: newUser.name,
+                image:newUser.profileImage,
+            })
+            await deleteStreamUser(id.toString());
         }
 )
 
