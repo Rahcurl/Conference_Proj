@@ -2,7 +2,7 @@ import {Inngest} from "inngest";
 import {connectDB} from "./db.js";
 import User from "../models/User.js";
 import { connect } from "mongoose";
-import {upsertStreamUser} from "./stream.js"
+import {upsertStreamUser, deleteStreamUser} from "./stream.js"
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "Conference_Project" });
