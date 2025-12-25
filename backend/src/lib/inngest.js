@@ -28,7 +28,7 @@ const syncUser = inngest.createFunction(
                 name: newUser.name,
                 image:newUser.profileImage,
             })
-            await deleteStreamUser(id.toString());
+           
         }
 )
 
@@ -40,8 +40,10 @@ const deleteUserFromDB = inngest.createFunction(
             const {id} =event.data  
             await User.deleteOne({clerkId:id});
 
-            //todo: Do something else
+            await deleteStreamUser(id.toString());
+            
         }
+        
 )
 
 
