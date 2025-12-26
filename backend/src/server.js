@@ -8,6 +8,7 @@ import {serve} from "inngest/express"
 import { inngest,functions } from "./lib/inngest.js";
 import { clerkMiddleware } from '@clerk/express';
 import { protecRoute } from "./middleware/protectRoute.js";
+import chatRoutes from "./routes/chatRoutes.js"
 
 const app = express()
 
@@ -20,7 +21,7 @@ app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 app.use(clerkMiddleware()); //this adds auth fieldsto request object: req.auth()
 
 app.use("/api/inngest",serve({client:inngest,functions  }))
-
+app.use("/api/chat",chatRoutes)
 
 //for getting the messange as json successfully 
 //use localhost:your_portnumber_in_dotenv i.e localhost:5001
