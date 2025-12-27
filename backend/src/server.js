@@ -7,7 +7,7 @@ import cors from "cors"
 import {serve} from "inngest/express"
 import { inngest,functions } from "./lib/inngest.js";
 import { clerkMiddleware } from '@clerk/express';
-import { protecRoute } from "./middleware/protectRoute.js";
+import { protectRoute } from "./middleware/protectRoute.js";
 import chatRoutes from "./routes/chatRoutes.js"
 
 const app = express()
@@ -35,7 +35,7 @@ app.get("/books", (req, res) => {
 })
 
 //when you pass an array of middleware to express,it automatically flattens and executes them sequentially,one by one
-app.get("/video-calls",protecRoute, (req, res) => { 
+app.get("/video-calls",protectRoute, (req, res) => { 
     res.status(200).json({ msg: "This is a protected route" })
 })
 //make our app ready for deployment
