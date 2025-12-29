@@ -1,4 +1,3 @@
-import './App.css';
 import { 
     SignedOut, 
     SignedIn,       // <--- ADDED: You must import the SignedIn component
