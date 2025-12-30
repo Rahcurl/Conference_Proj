@@ -1,33 +1,26 @@
 import { 
     SignedOut, 
-    SignedIn,       // <--- ADDED: You must import the SignedIn component
+    SignedIn,      
     SignInButton, 
     SignOutButton, 
-    UserButton      // <--- ADDED: UserButton is also needed from Clerk
+    UserButton,
+    useUser
 } from '@clerk/clerk-react';
+import { Routes,Route,Navigate } from 'react-router';
+import HomePage from './pages/HomePage';
+import ProblemsPage from './pages/ProblemsPage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
+  const { isSignedIn } = useUser();
   return (
     <>
-      <h1>Welcome to the App</h1>
-      
-      <SignedOut>
-        <p>Please sign in to continue.</p>
-        <SignInButton mode="modal">
-          <button classname="">
-            Sign up please
-          </button>
-        </SignInButton>
-      </SignedOut>
-
-      <SignedIn>
-        <p>You are logged in!</p>
-        
-        <UserButton /> 
-        <SignOutButton />
-      </SignedIn>
-      
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/problems" element={isSignedIn ? <ProblemsPage /> : <Navigate to={"/"}/>} />
+    </Routes>
+    <Toaster position='top-center'/>
     </>
   );
 }
