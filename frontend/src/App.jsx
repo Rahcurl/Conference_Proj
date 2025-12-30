@@ -10,7 +10,7 @@ import { Routes,Route,Navigate } from 'react-router';
 import HomePage from './pages/HomePage';
 import ProblemsPage from './pages/ProblemsPage';
 import { Toaster } from 'react-hot-toast';
-
+  
 function App() {
 
   const { isSignedIn } = useUser();
@@ -20,9 +20,12 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/problems" element={isSignedIn ? <ProblemsPage /> : <Navigate to={"/"}/>} />
     </Routes>
-    <Toaster position='top-center'/>
+    <Toaster toastOptions={{duration:3000}}/>
     </>
   );
 }
 
 export default App;
+
+// tw, daisyUi, react-router, react-hot-toast, react-query
+//todo: react-queryaka tanstack query, axios -->means data fetching
