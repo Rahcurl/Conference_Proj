@@ -29,3 +29,4 @@ export default App;
 
 // tw, daisyUi, react-router, react-hot-toast, react-query
 //todo: react-queryaka tanstack query, axios -->means data fetching
+//? info comment 
